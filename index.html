@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tentang Evan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -500% 0; }
+            100% { background-position: 500% 0; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="3" stitchTiles="stitch"/%3E%3CfeColorMatrix type="saturate" values="0"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/%3E%3C/svg%3E');
+        }
+
+        .card {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            width: 800px;
+            max-width: 90%;
+            height: 450px;
+            background: #1c1c1c;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            background: radial-gradient(circle at var(--x) var(--y), rgba(0, 150, 255, 0.3), transparent 20%),
+                        radial-gradient(circle at calc(var(--x) + 100px) calc(var(--y) - 50px), rgba(255, 0, 150, 0.2), transparent 30%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-left {
+            background-image: url('https://i.pinimg.com/736x/a6/16/28/a6162845747ab6f081706e9a00552a13.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        .card-left::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, transparent 60%);
+        }
+        .card-left h1, .card-left p {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .card-left h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+        }
+        .card-left p {
+            color: #a0a0a0;
+            margin: 5px 0 0 0;
+        }
+
+        .card-right {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            justify-content: center; /* [Diperbarui] Mengatur posisi vertikal */
+        }
+        .card-right h2 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        .bio p {
+            margin: 0;
+            line-height: 1.6;
+            color: #c0c0c0;
+        }
+        .skills-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .pill {
+            background: #2a2a2a;
+            color: #c0c0c0;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .social-links { display: flex; gap: 15px; }
+
+        /* [Diperbarui] Mengganti gaya ikon sosial */
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%; /* Membuatnya bulat */
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.4rem;
+            background: linear-gradient(90deg, #007cf0, #00dfd8, #ff0080, #007cf0);
+            background-size: 400% 100%;
+            animation: shimmer 10s linear infinite;
+            border: none;
+            transition: transform 0.2s ease;
+        }
+        .social-links a:hover {
+            transform: scale(1.1) translateY(-3px);
+        }
+
+        @media (max-width: 850px) {
+            .card {
+                grid-template-columns: 1fr;
+                height: auto;
+                width: 380px;
+            }
+            .card-left { height: 250px; }
+            .card-right { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="interactive-card">
+        <div class="card-left">
+            <h1>Evan</h1>
+            <p>FiveM Designer & Web Developer</p>
+        </div>
+        <div class="card-right">
+            <div class="bio">
+                <h2>TENTANG SAYA</h2>
+                <p>Orang Gabut yang suka design dan ngegame</p>
+            </div>
+            <div class="skills">
+                <h2>KEAHLIAN</h2>
+                <div class="skills-pills">
+                    <span class="pill">Livery Design</span>
+                    <span class="pill">Clothing (FiveM)</span>
+                    <span class="pill">Laravel</span>
+                    <span class="pill">UI/UX</span>
+                </div>
+            </div>
+            <div class="connect">
+                <h2>TERHUBUNG</h2>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/r.zaevan_/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://discord.com/users/507481511163854848" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="https://tiktok.com/@vann_ev" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script untuk efek glow yang mengikuti kursor
+        const card = document.getElementById('interactive-card');
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
+    </script>
+
+</body>
+</html>
